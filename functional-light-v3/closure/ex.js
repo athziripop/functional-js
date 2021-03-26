@@ -1,7 +1,12 @@
 "use strict";
 
 function strBuilder(str) {
-	return strBuilder;
+  return function next(nextStr) {
+    if (typeof nextStr === "string") {
+      return strBuilder(str + nextStr);
+    }
+    return str;
+  };
 }
 
 var hello = strBuilder("Hello, ");
